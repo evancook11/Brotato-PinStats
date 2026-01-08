@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=1]
+[ext_resource path="res://particles/sprites/particle_23.png" type="Texture" id=2]
+[ext_resource path="res://mods-unpacked/Revy-PinStats/pinned_stat_container.gd" type="Script" id=3]
+
+[node name="PinnedStatContainer" type="HBoxContainer"]
+script = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 40, 0 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Value" type="Label" parent="."]
+margin_left = 44.0
+margin_right = 89.0
+margin_bottom = 24.0
+grow_horizontal = 0
+rect_min_size = Vector2( 45, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+align = 2
