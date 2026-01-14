@@ -5,6 +5,7 @@ var stat: StatData
 
 onready var _icon = $Icon
 onready var _value = $Value
+var order
 
 
 func _ready():
