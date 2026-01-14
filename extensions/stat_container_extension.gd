@@ -1,6 +1,6 @@
 extends "res://ui/menus/shop/stat_container.gd"
 
-onready var _pin_button = TextureButton.new()
+var _pin_button = TextureButton.new()
 onready var _stat = ItemService.get_stat(key.to_lower())
 var _pressed_sound = preload("res://ui/sounds/button_press.wav")
 var _pitch_variation = 0.2
@@ -8,15 +8,23 @@ var _pitch_variation = 0.2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
-	$HBoxContainer.add_child(_pin_button)
-
+	
+	var pin_button_name = "PinButton"
+	var hbox_container = $HBoxContainer
+	
+	# Checks if the pin already exists and deletes it if so
+	# (this is needed because the curse stat is added by duplicating an existing node)
+	if hbox_container.has_node(pin_button_name):
+		hbox_container.get_node(pin_button_name).free()
+		
+	hbox_container.add_child(_pin_button)
+	_pin_button.name = pin_button_name
 	_pin_button.connect("button_up", self, "_toggle_pinned_stat")
 	_pin_button.texture_normal = preload("res://mods-unpacked/Revy-PinStats/assets/PinnedStats_pin.png")
 	_pin_button.expand = true
 	_pin_button.rect_min_size = _icon.rect_size
 	_pin_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 	_set_pin_opacity()
-
 
 
 func _toggle_pinned_stat() -> void:
