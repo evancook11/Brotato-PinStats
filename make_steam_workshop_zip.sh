@@ -13,7 +13,7 @@ rm mod-temp/mods-unpacked/Revy-PinStats/make_steam_workshop_zip.sh
 mkdir mod-temp/.import
 cp -r .import/PinnedStats_* mod-temp/.import
 
-zip -r "PinnedStats.zip" mod_temp
+zip -qr "PinnedStats.zip" mod-temp
 
 rm -rf mod-temp
 
